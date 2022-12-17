@@ -41,6 +41,7 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
   * @low: lower index
   * @high: higher index
   * @size: the size of the array
+  * Return: i
   */
 
 int partition(int *array, int low, int high, size_t size)
@@ -49,35 +50,35 @@ int partition(int *array, int low, int high, size_t size)
     int j = high;
     int pivot = array[high];
 
-    for (j = low; j < high; j++)
-    {
-        if (array[j] <= pivot)
+	for (j = low; j < high; j++)
+	{
+		if (array[j] <= pivot)
 		{
-            swap(&array[i], &array[j]);
+			swap(&array[i], &array[j]);
 
-            if (i != j)
-            print_array(array, size);
-            i++;
+			if (i != j)
+			print_array(array, size);
+			i++;
 		}
 	}
-    
-    swap(&array[i], &array[high]);
-    if (i != j)
-    print_array(array, size);
+
+	swap(&array[i], &array[high]);
+	if (i != j)
+	print_array(array, size);
 
 	return (i);
 }
 
 /**
  * swap - function that swaps two integers
- * @x: first integer
- * @y: second integer
+ * @a: first integer
+ * @b: second integer
  */
 void swap(int *a, int *b)
 {
-    int t;
+	int t;
 
-    t = *a;
-    *a = *b;
-    *b = t;
+	t = *a;
+	*a = *b;
+	*b = t;
 }
