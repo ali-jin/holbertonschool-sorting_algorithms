@@ -46,9 +46,9 @@ void quick_sort_recursion(int *array, int low, int high, size_t size)
 
 int partition(int *array, int low, int high, size_t size)
 {
-    int i = low;
-    int j = high;
-    int pivot = array[high];
+	int i = low;
+	int j = high;
+	int pivot = array[high];
 
 	for (j = low; j < high; j++)
 	{
