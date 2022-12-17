@@ -1,30 +1,36 @@
 #include "sort.h"
 
 /**
- * selection_sort - selection sort that sorts an array of integers in ascending
- * order
- * @array: array
- * @size: size of array
- * Return: void
+ * insertion_sort_list - function that sorts a doubly linked list of integers
+ * in ascending order using the Insertion sort algorithm
+ * @list: doubly linked list to sort
+ *
  */
-
-void selection_sort(int *array, size_t size)
+void insertion_sort_list(listint_t **list)
 {
-	size_t i, j, tmp, min = 0;
+	listint_t *node;
 
-	for (i = 0; i < size; i++)
+	if (list == NULL || (*list)->next == NULL)
+		return;
+
+	node = (*list)->next;
+	while (node != NULL)
 	{
-		min = i;
-		for (j = i; j < size; j++)
+		while (node->prev != NULL && (node->prev->n > node->n))
 		{
-			if (array[j] < array[min])
-				min = j;
+			node->prev->next = node->next;
+			if (node->next != NULL)
+				node->next->prev = node->prev;
+			node->next = node->prev;
+			node->prev = node->next->prev;
+			node->next->prev = node;
+
+			if (node->prev == NULL)
+				(*list) = node;
+			else
+				node->prev->next = node;
+			print_list(*list);
 		}
-		tmp = array[i];
-		array[i] = array[min];
-		array[min] = tmp;
-		if (min != i)
-			print_array(array, size);
+		node = node->next;
 	}
 }
-
